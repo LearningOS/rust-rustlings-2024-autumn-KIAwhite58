@@ -18,6 +18,7 @@ struct Order {
     count: u32,
 }
 
+
 fn create_order_template() -> Order {
     Order {
         name: String::from("Bob"),
