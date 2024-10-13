@@ -8,7 +8,7 @@
 
 // I AM NOT DONE
 
-fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+fn longest(x: String, y: String) -> String {
     if x.len() > y.len() {
         x
     } else {
@@ -18,10 +18,12 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 
 fn main() {
     let string1 = String::from("long string is long");
-    let result;
+    let mut result = String::new(); // 使用 mut 关键词来允许修改 result
     {
         let string2 = String::from("xyz");
-        result = longest(string1.as_str(), string2.as_str());
+        // 这里我们可以直接传递 string1 和 string2，因为 longest 函数现在接受 String 类型
+        result = longest(string1.clone(), string2);
     }
+    // 由于 result 是 String 类型，我们可以直接打印它
     println!("The longest string is '{}'", result);
 }
