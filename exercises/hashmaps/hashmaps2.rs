@@ -36,12 +36,25 @@ fn fruit_basket(basket: &mut HashMap<Fruit, u32>) {
         Fruit::Pineapple,
     ];
 
+    // 首先添加所有水果，每种至少一个
     for fruit in fruit_kinds {
-        // TODO: Insert new fruits if they are not already present in the
-        // basket. Note that you are not allowed to put any type of fruit that's
-        // already present!
+        if !basket.contains_key(&fruit) {
+            basket.insert(fruit, 1);
+        }
+    }
+
+    // 然后确保总数超过 11
+    while basket.values().sum::<u32>() <= 11 {
+        if !basket.contains_key(&Fruit::Banana) {
+            basket.insert(Fruit::Banana, 1);
+        } else if !basket.contains_key(&Fruit::Pineapple) {
+            basket.insert(Fruit::Pineapple, 1);
+        } else {
+            *basket.get_mut(&Fruit::Banana).unwrap() += 1;
+        }
     }
 }
+
 
 #[cfg(test)]
 mod tests {
