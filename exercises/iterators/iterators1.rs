@@ -14,12 +14,16 @@
 fn main() {
     let my_fav_fruits = vec!["banana", "custard apple", "avocado", "peach", "raspberry"];
 
-    let mut my_iterable_fav_fruits = ???;   // TODO: Step 1
+    // Step 1: 创建一个迭代器来遍历 my_fav_fruits 中的元素
+    let mut my_iterable_fav_fruits = my_fav_fruits.iter();   
 
     assert_eq!(my_iterable_fav_fruits.next(), Some(&"banana"));
-    assert_eq!(my_iterable_fav_fruits.next(), ???);     // TODO: Step 2
+    // Step 2: 断言下一个元素是 "custard apple"
+    assert_eq!(my_iterable_fav_fruits.next(), Some(&"custard apple"));     
     assert_eq!(my_iterable_fav_fruits.next(), Some(&"avocado"));
-    assert_eq!(my_iterable_fav_fruits.next(), ???);     // TODO: Step 3
+    // Step 3: 断言下一个元素是 "peach"
+    assert_eq!(my_iterable_fav_fruits.next(), Some(&"peach"));     
     assert_eq!(my_iterable_fav_fruits.next(), Some(&"raspberry"));
-    assert_eq!(my_iterable_fav_fruits.next(), ???);     // TODO: Step 4
+    // Step 4: 断言没有更多的元素，因此 next() 返回 None
+    assert_eq!(my_iterable_fav_fruits.next(), None);
 }
