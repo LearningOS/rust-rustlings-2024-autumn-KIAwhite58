@@ -14,14 +14,18 @@ use std::num::ParseIntError;
 fn main() {
     let mut tokens = 100;
     let pretend_user_input = "8";
+    let cost = total_cost(pretend_user_input);
 
-    let cost = total_cost(pretend_user_input)?;
-
-    if cost > tokens {
-        println!("You can't afford that many!");
-    } else {
-        tokens -= cost;
-        println!("You now have {} tokens.", tokens);
+    match cost {
+        Ok(cost_value) => {
+            if cost_value > tokens {
+                println!("You can't afford that many!");
+            } else {
+                tokens -= cost_value;
+                println!("You now have {} tokens.", tokens);
+            }
+        },
+        Err(e) => println!("Error parsing input: {}", e),
     }
 }
 
