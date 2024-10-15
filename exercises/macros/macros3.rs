@@ -8,13 +8,20 @@
 // I AM NOT DONE
 
 mod macros {
+    #[macro_export]
     macro_rules! my_macro {
         () => {
             println!("Check out my macro!");
         };
     }
+
+    // 提供一个公共函数来调用宏
+    pub fn call_macro() {
+        my_macro!();
+    }
 }
 
 fn main() {
-    my_macro!();
+    // 通过模块的公共函数间接调用宏
+    macros::call_macro();
 }
